@@ -2,50 +2,58 @@ const Discord = require('discord.js');
 const { BOT_TOKEN } = require ('./auth/tokens'); 
 const client = new Discord.Client();
 
-function diceRoller (message) {
+function getDiceRoll (query) {
+  return query.split('!roll ').pop();
+}
 
-    // "3d8"
-    const requestedRoll = message.content
-        .split('!roll ')
-        .pop();
+function getDiceParams(requestedRoll) { 
+  return requestedRoll.split('d').map(n => Number(n ? n : 1))
+}
 
-    // [3, 8]
-    const rollData = requestedRoll
-        .split('d')
-        .map(n => Number(n ? n : 1));
+function rollDie(die) {
+  return Math.floor((Math.random() * Math.floor(die)) + 1);
+}
 
-    const numberOfDice = rollData[0];
-    const numberOfSides = rollData[1];
-
-    const rollDie = (die) => Math.floor((Math.random() * Math.floor(die)) + 1);
-
-    // example return: [ 5, 3, 8]
-    const rollDice = rollData => {
-        let rolls = [];
+function rollDice(dice, sides) {
+  let rolls = [];
     
-        for (let die = 0; die < numberOfDice; die++) {
-            rolls.push(rollDie(numberOfSides))
-        }
+  for (let die = 0; die < dice; die++) {
+    rolls.push(rollDie(sides))
+  }
     
-        return rolls;
-    }
+  return rolls;
+}
 
-    if ( isNaN(numberOfDice) || isNaN(numberOfSides) ) {
-        return `dice roll **${requestedRoll}** was not recognised. **(Error)**`;
-    }
+function validateDiceParams(params) {
+  return params.every(param => Number.isInteger(param));
+}
 
-    const results = rollDice(rollData);
-    const totalResult = results.reduce((a, b) => a + b);
-    const allResults = results.join(', ');
+function getRollResult (roll, params) {
+  const dice = params[0];
+  const sides = params[1];
 
-    return (numberOfDice === 1)
-        ? `you rolled a ${requestedRoll} and got **${totalResult}**`
-        : `you rolled ${requestedRoll} and got **${totalResult}** _(${allResults})_`;
+  const result = rollDice(dice, sides);
+  const allResults = result.join(', ');
+  const totalResult = result.reduce((a, b) => a + b);
+  
+  return (dice === 1)
+    ? `you rolled a ${roll} and got **${totalResult}**`
+    : `you rolled ${roll} and got **${totalResult}** _(${allResults})_`;
+}
+
+function initDiceRoller (message) {
+  const diceRoll = getDiceRoll(message); 
+  const diceParams = getDiceParams(diceRoll);
+  const isRollValid = validateDiceParams(diceParams);
+
+  return (!isRollValid)
+    ? `dice roll **${diceRoll}** was not recognised. **(Error)**`
+    : getRollResult(diceRoll, diceParams);
 };
 
 client.on('message', msg => {
   if (msg.content.includes('!roll ')) {
-    msg.reply(diceRoller(msg))
+    msg.reply(initDiceRoller(msg.content))
   }
 });
 
