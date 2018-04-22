@@ -29,14 +29,14 @@ function diceRoller (message) {
     
         return rolls;
     }
-    
-    const results = rollDice(rollData);
-    const totalResult = results.reduce((a, b) => a + b);
-    const allResults = results.join(', ');
 
     if ( isNaN(numberOfDice) || isNaN(numberOfSides) ) {
         return `dice roll **${requestedRoll}** was not recognised. **(Error)**`;
     }
+
+    const results = rollDice(rollData);
+    const totalResult = results.reduce((a, b) => a + b);
+    const allResults = results.join(', ');
 
     return (numberOfDice === 1)
         ? `you rolled a ${requestedRoll} and got **${totalResult}**`
