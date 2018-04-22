@@ -3,11 +3,19 @@ const { BOT_TOKEN } = require ('./auth/tokens');
 const client = new Discord.Client();
 
 function getDiceRoll (query) {
-  return query.split('!roll ').pop();
+  const PREFIX = '!roll ';
+  
+  return query
+    .split(PREFIX)
+    .pop();
 }
 
 function getDiceParams(requestedRoll) { 
-  return requestedRoll.split('d').map(n => Number(n ? n : 1))
+  const DELIMITER = 'd';
+  
+  return requestedRoll
+    .split(DELIMITER)
+    .map(n => Number(n ? n : 1))
 }
 
 function rollDie(die) {
@@ -31,9 +39,10 @@ function validateDiceParams(params) {
 function getRollResult (roll, params) {
   const dice = params[0];
   const sides = params[1];
+  const DELIMITER = ', ';
 
   const result = rollDice(dice, sides);
-  const allResults = result.join(', ');
+  const allResults = result.join(DELIMITER);
   const totalResult = result.reduce((a, b) => a + b);
   
   return (dice === 1)
@@ -41,7 +50,7 @@ function getRollResult (roll, params) {
     : `you rolled ${roll} and got **${totalResult}** _(${allResults})_`;
 }
 
-function initDiceRoller (message) {
+function init (message) {
   const diceRoll = getDiceRoll(message); 
   const diceParams = getDiceParams(diceRoll);
   const isRollValid = validateDiceParams(diceParams);
@@ -53,7 +62,7 @@ function initDiceRoller (message) {
 
 client.on('message', msg => {
   if (msg.content.includes('!roll ')) {
-    msg.reply(initDiceRoller(msg.content))
+    msg.reply(init(msg.content))
   }
 });
 
