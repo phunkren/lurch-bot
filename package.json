@@ -1,0 +1,15 @@
+{
+  "name": "dice-roller",
+  "version": "1.0.0",
+  "description": "An automated dice roller for Discord servers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["discord", "dice", "roller"],
+  "author": "Andrew James Dick",
+  "license": "ISC",
+  "devDependencies": {
+    "discord.js": "^11.3.2"
+  }
+}
