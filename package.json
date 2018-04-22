@@ -8,7 +8,7 @@
   },
   "keywords": ["discord", "dice", "roller"],
   "author": "Andrew James Dick",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "discord.js": "^11.3.2"
   }
