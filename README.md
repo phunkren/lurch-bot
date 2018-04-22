@@ -1,15 +1,10 @@
 # Discord Dice Roller 
 
 
-## Installation: 
-
-
-
-
 ## Commands: 
 
 **die:** 
 `!roll d100`
 
-**dice**
+**dice:**
 `!roll 2d8`
