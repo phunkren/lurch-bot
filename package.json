@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["discord", "dice", "roller"],
+  "keywords": [
+    "discord",
+    "dice",
+    "roller"
+  ],
   "author": "Andrew James Dick",
   "license": "MIT",
   "devDependencies": {

@@ -1,14 +1,16 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const { BOT_TOKEN } = require('./auth/tokens');
+
 const getCommand = require('./commands/getCommand');
 const getDiceRoll = require('./commands/getDiceRoll');
 const getHelp = require('./commands/getHelp');
+
 const { matchDieRoll, matchDiceRoll } = require('./util/functions');
-const { BOT_TOKEN } = require('./auth/tokens');
 const {
   BOT_PREFIX,
   COMMAND_HELP,
-  MESSAGE_FALLBACK,
+  COMMAND_FALLBACK,
 } = require('./util/constants');
 
 client.on('message', message => {
@@ -24,7 +26,7 @@ client.on('message', message => {
         return message.reply(getDiceRoll(command));
 
       default:
-        return message.reply(MESSAGE_FALLBACK);
+        return message.reply(COMMAND_FALLBACK);
     }
   }
 });
