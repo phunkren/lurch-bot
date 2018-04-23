@@ -1,68 +1,31 @@
 const Discord = require('discord.js');
-const { BOT_TOKEN } = require ('./auth/tokens'); 
 const client = new Discord.Client();
+const getCommand = require('./commands/getCommand');
+const getDiceRoll = require('./commands/getDiceRoll');
+const getHelp = require('./commands/getHelp');
+const { matchDieRoll, matchDiceRoll } = require('./util/functions');
+const { BOT_TOKEN } = require('./auth/tokens');
+const {
+  BOT_PREFIX,
+  COMMAND_HELP,
+  MESSAGE_FALLBACK,
+} = require('./util/constants');
 
-function getDiceRoll (query) {
-  const PREFIX = '!roll ';
-  
-  return query
-    .split(PREFIX)
-    .pop();
-}
+client.on('message', message => {
+  if (message.content.startsWith(BOT_PREFIX)) {
+    const command = getCommand(message.content);
 
-function getDiceParams(requestedRoll) { 
-  const DELIMITER = 'd';
-  
-  return requestedRoll
-    .split(DELIMITER)
-    .map(n => Number(n ? n : 1))
-}
+    switch (command) {
+      case COMMAND_HELP:
+        return message.reply(getHelp());
 
-function rollDie(die) {
-  return Math.floor((Math.random() * Math.floor(die)) + 1);
-}
+      case matchDieRoll(command):
+      case matchDiceRoll(command):
+        return message.reply(getDiceRoll(command));
 
-function rollDice(dice, sides) {
-  let rolls = [];
-    
-  for (let die = 0; die < dice; die++) {
-    rolls.push(rollDie(sides))
-  }
-    
-  return rolls;
-}
-
-function validateDiceParams(params) {
-  return params.every(param => Number.isInteger(param));
-}
-
-function getRollResult (roll, params) {
-  const dice = params[0];
-  const sides = params[1];
-  const DELIMITER = ', ';
-
-  const result = rollDice(dice, sides);
-  const allResults = result.join(DELIMITER);
-  const totalResult = result.reduce((a, b) => a + b);
-  
-  return (dice === 1)
-    ? `you rolled a ${roll} and got **${totalResult}**`
-    : `you rolled ${roll} and got **${totalResult}** _(${allResults})_`;
-}
-
-function init (message) {
-  const diceRoll = getDiceRoll(message); 
-  const diceParams = getDiceParams(diceRoll);
-  const isRollValid = validateDiceParams(diceParams);
-
-  return (!isRollValid)
-    ? `dice roll **${diceRoll}** was not recognised. **(Error)**`
-    : getRollResult(diceRoll, diceParams);
-};
-
-client.on('message', msg => {
-  if (msg.content.includes('!roll ')) {
-    msg.reply(init(msg.content))
+      default:
+        return message.reply(MESSAGE_FALLBACK);
+    }
   }
 });
 
