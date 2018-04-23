@@ -1,5 +1,6 @@
 # Discord Dice Roller 
 
+An automated dice roller for the Discord application. 
 
 ## Commands: 
 
@@ -8,3 +9,6 @@
 
 **dice:**
 `!roll 2d8`
+
+**help:**
+`!roll help`
