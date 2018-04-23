@@ -25,15 +25,15 @@ function validateDiceParams(params) {
 }
 
 function getRollResult(roll, params) {
-  const dice = params[0];
-  const sides = params[1];
+  const numberOfDice = params[0];
+  const numberOfSides = params[1];
   const DELIMITER = ", ";
 
-  const result = rollDice(dice, sides);
+  const result = rollDice(numberOfDice, numberOfSides);
   const allResults = result.join(DELIMITER);
   const totalResult = result.reduce((a, b) => a + b);
 
-  return dice === 1
+  return numberOfDice === 1
     ? `you rolled a ${roll} and got **${totalResult}**`
     : `you rolled ${roll} and got **${totalResult}** _(${allResults})_`;
 }
@@ -48,9 +48,9 @@ function init(message) {
     : getRollResult(diceRoll, diceParams);
 }
 
-client.on("message", msg => {
-  if (msg.content.includes(COMMAND_PREFIX)) {
-    msg.reply(init(msg.content));
+client.on("message", message => {
+  if (message.content.includes(COMMAND_PREFIX)) {
+    message.reply(init(message.content));
   }
 });
 
