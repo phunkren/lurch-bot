@@ -9,7 +9,8 @@ const {
   COMMAND_ROLL,
 } = require('./constants');
 
-const MESSAGE_COMMAND_FALLBACK = `command not recognised. Try **${BOT_PREFIX} ${COMMAND_HELP}** for a list of available commands.`;
+const MESSAGE_COMMAND_FALLBACK = command =>
+  `command **${command}** not recognised. Try **${BOT_PREFIX} ${COMMAND_HELP}** for a list of available commands.`;
 
 const RICH_EMBED_ABOUT = {
   color: 30975,

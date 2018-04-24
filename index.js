@@ -33,7 +33,7 @@ client.on('message', message => {
         return message.reply(getDiceRoll(command));
 
       default:
-        return message.reply(MESSAGE_COMMAND_FALLBACK);
+        return message.reply(MESSAGE_COMMAND_FALLBACK(command));
     }
   }
 });
