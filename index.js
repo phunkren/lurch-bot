@@ -6,7 +6,7 @@ const getCommand = require('./commands/getCommand');
 const getDiceRoll = require('./commands/getDiceRoll');
 const getHelp = require('./commands/getHelp');
 
-const { matchDieRoll, matchDiceRoll } = require('./util/functions');
+const { matchDiceRoll } = require('./util/functions');
 const {
   BOT_PREFIX,
   COMMAND_HELP,
@@ -21,7 +21,6 @@ client.on('message', message => {
       case COMMAND_HELP:
         return message.reply(getHelp());
 
-      case matchDieRoll(command):
       case matchDiceRoll(command):
         return message.reply(getDiceRoll(command));
 
