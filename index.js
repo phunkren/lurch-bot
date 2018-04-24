@@ -13,7 +13,7 @@ const {
 } = require('./util/constants');
 
 const {
-  MESSAGE_FALLBACK,
+  MESSAGE_COMMAND_FALLBACK,
   RICH_EMBED_HELP,
   RICH_EMBED_ABOUT,
 } = require('./util/messages');
@@ -33,7 +33,7 @@ client.on('message', message => {
         return message.reply(getDiceRoll(command));
 
       default:
-        return message.reply(MESSAGE_FALLBACK);
+        return message.reply(MESSAGE_COMMAND_FALLBACK);
     }
   }
 });
