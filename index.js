@@ -1,17 +1,22 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const { BOT_TOKEN } = require('./auth/tokens');
-
 const getCommand = require('./commands/getCommand');
 const getDiceRoll = require('./commands/getDiceRoll');
-const getHelp = require('./commands/getHelp');
-
 const { matchDiceRoll } = require('./util/functions');
+const { BOT_TOKEN } = require('./auth/tokens');
+
 const {
   BOT_PREFIX,
   COMMAND_HELP,
-  COMMAND_FALLBACK,
+  COMMAND_ABOUT,
+  COMMAND_ROLL,
 } = require('./util/constants');
+
+const {
+  MESSAGE_FALLBACK,
+  RICH_EMBED_HELP,
+  RICH_EMBED_ABOUT,
+} = require('./util/messages');
 
 client.on('message', message => {
   if (message.content.startsWith(BOT_PREFIX)) {
@@ -19,13 +24,16 @@ client.on('message', message => {
 
     switch (command) {
       case COMMAND_HELP:
-        return message.reply(getHelp());
+        return message.reply({ embed: RICH_EMBED_HELP });
 
-      case matchDiceRoll(command):
+      case COMMAND_ABOUT:
+        return message.reply({ embed: RICH_EMBED_ABOUT });
+
+      case COMMAND_ROLL:
         return message.reply(getDiceRoll(command));
 
       default:
-        return message.reply(COMMAND_FALLBACK);
+        return message.reply(MESSAGE_FALLBACK);
     }
   }
 });
