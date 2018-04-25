@@ -1,4 +1,4 @@
-const { getCommand } = require('../util/functions');
+const { stripCommand } = require('../util/functions');
 const { COMMAND_ROLL } = require('../util/constants');
 
 function getDiceParams(requestedRoll) {
@@ -33,7 +33,7 @@ function rollResults(roll, params) {
 }
 
 const getDiceRoll = command => {
-  const diceRoll = getCommand(command, COMMAND_ROLL);
+  const diceRoll = stripCommand(command, COMMAND_ROLL);
   const diceParams = getDiceParams(diceRoll);
   const isRollValid = validateDiceParams(diceParams);
 
