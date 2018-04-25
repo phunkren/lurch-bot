@@ -1,5 +1,5 @@
 // Application Details
-const BOT_NAME = 'Dice Roller';
+const BOT_NAME = 'Lurch';
 const BOT_PREFIX = '!lurch';
 const BOT_REPO_URL = 'https://github.com/AndrewJDick/dice-roller';
 const BOT_ICON_URL = 'https://i.imgur.com/Fhxwe93.jpg';
