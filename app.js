@@ -63,12 +63,6 @@ client.on('message', async message => {
   }
 });
 
-client.on('guildCreate', guild => {
-  console.log(logGuildAdd(guild));
-});
-
-client.on('guildDelete', guild => {
-  console.log(logGuildRemove(guild));
-});
-
+client.on('guildCreate', guild => logGuildAdd(guild));
+client.on('guildDelete', guild => logGuildRemove(guild));
 client.login(BOT_TOKEN);
