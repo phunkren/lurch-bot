@@ -1,9 +1,9 @@
 const { COLORS } = require('./colors');
 
 const {
+  BOT_ICON_URL,
   BOT_NAME,
   BOT_PREFIX,
-  BOT_ICON_URL,
   BOT_REPO_URL,
   BOT_VERSION,
   COMMAND_ABOUT,
@@ -27,7 +27,7 @@ const RICH_EMBED_ABOUT = {
 
 const RICH_EMBED_HELP = {
   color: COLORS.orange,
-  title: 'Command List',
+  title: '🔧 Command List',
   description: `Here is a list of all available commands for ${BOT_NAME}:`,
   fields: [
     {
