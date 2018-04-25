@@ -3,16 +3,12 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const getDiceRoll = require('./commands/getDiceRoll');
 const { stripCommand, logCommandResponse } = require('./util/functions');
-
 const {
   BOT_PREFIX,
   COMMAND_HELP,
   COMMAND_ABOUT,
   COMMAND_ROLL,
-  REGEX_DIE,
-  REGEX_DICE,
 } = require('./util/constants');
-
 const {
   MESSAGE_COMMAND_FALLBACK,
   RICH_EMBED_HELP,

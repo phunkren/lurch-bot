@@ -41,8 +41,8 @@ function rollResults(roll, params) {
 
 const getDiceRoll = command => {
   const diceRoll = stripCommand(command, COMMAND_ROLL);
-  const diceParams = getDiceParams(diceRoll);
   const isRollValid = validateDiceParams(diceRoll);
+  const diceParams = getDiceParams(diceRoll);
 
   return !isRollValid
     ? `dice roll **${diceRoll}** was not recognised. **(Error)**`
