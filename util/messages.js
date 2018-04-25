@@ -8,11 +8,16 @@ const {
   BOT_VERSION,
   COMMAND_ABOUT,
   COMMAND_HELP,
+  COMMAND_PING,
   COMMAND_ROLL,
 } = require('./constants');
 
 const MESSAGE_COMMAND_FALLBACK = command =>
   `command **${command}** not recognised. Try **${BOT_PREFIX} ${COMMAND_HELP}** for a list of available commands.`;
+
+const MESSAGE_PING_RESPONSE = (originalMessage, message, client) =>
+  `You rang? Latency is ${originalMessage.createdTimestamp -
+    message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`;
 
 const RICH_EMBED_ABOUT = {
   color: COLORS.blue,
@@ -41,13 +46,18 @@ const RICH_EMBED_HELP = {
     },
     {
       name: `${BOT_PREFIX} ${COMMAND_ABOUT}`,
-      value: `A list of information about ${BOT_NAME}`,
+      value: `General information about ${BOT_NAME}`,
+    },
+    {
+      name: `${BOT_PREFIX} ${COMMAND_PING}`,
+      value: `Pings ${BOT_NAME}'s server`,
     },
   ],
 };
 
 module.exports = {
   MESSAGE_COMMAND_FALLBACK,
+  MESSAGE_PING_RESPONSE,
   RICH_EMBED_ABOUT,
   RICH_EMBED_HELP,
 };
