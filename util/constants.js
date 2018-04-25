@@ -11,8 +11,8 @@ const COMMAND_ABOUT = 'about';
 const COMMAND_ROLL = 'roll';
 
 // Regular Expressions
-const REGEX_DIE = /[d][0-9]+/;
-const REGEX_DICE = /[0-9]+[d][0-9]+/;
+const REGEX_DIE = /[d][0-9]+/i; // d20
+const REGEX_DICE = /[0-9]+[d][0-9]+/i; // 3d6
 
 module.exports = {
   BOT_NAME,

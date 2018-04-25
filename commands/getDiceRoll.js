@@ -1,3 +1,6 @@
+const { getCommand } = require('../util/functions');
+const { COMMAND_ROLL } = require('../util/constants');
+
 function getDiceParams(requestedRoll) {
   const DELIMITER = 'd';
   return requestedRoll.split(DELIMITER).map(n => Number(n ? n : 1));
@@ -29,7 +32,8 @@ function rollResults(roll, params) {
     : `you rolled ${roll} and got **${totalResult}** _(${allResults})_ `;
 }
 
-const getDiceRoll = diceRoll => {
+const getDiceRoll = command => {
+  const diceRoll = getCommand(command, COMMAND_ROLL);
   const diceParams = getDiceParams(diceRoll);
   const isRollValid = validateDiceParams(diceParams);
 

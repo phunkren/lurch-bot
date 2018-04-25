@@ -1,5 +1,12 @@
 const { REGEX_DIE, REGEX_DICE } = require('./constants');
 
+const getCommand = (message, command) =>
+  message
+    .toLowerCase()
+    .split(command)
+    .pop()
+    .trim();
+
 const matchDiceRoll = command => {
   const DIE = command.match(REGEX_DIE);
   const DICE = command.match(REGEX_DICE);
@@ -16,5 +23,6 @@ const matchDiceRoll = command => {
 };
 
 module.exports = {
+  getCommand,
   matchDiceRoll,
 };

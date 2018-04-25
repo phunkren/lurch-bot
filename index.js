@@ -1,15 +1,16 @@
+const { BOT_TOKEN } = require('./auth/tokens');
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const getCommand = require('./commands/getCommand');
 const getDiceRoll = require('./commands/getDiceRoll');
-const { matchDiceRoll } = require('./util/functions');
-const { BOT_TOKEN } = require('./auth/tokens');
+const { getCommand } = require('./util/functions');
 
 const {
   BOT_PREFIX,
   COMMAND_HELP,
   COMMAND_ABOUT,
   COMMAND_ROLL,
+  REGEX_DIE,
+  REGEX_DICE,
 } = require('./util/constants');
 
 const {
@@ -20,7 +21,7 @@ const {
 
 client.on('message', message => {
   if (message.content.startsWith(BOT_PREFIX)) {
-    const command = getCommand(message.content);
+    const command = getCommand(message.content, BOT_PREFIX);
 
     switch (command) {
       case COMMAND_HELP:
@@ -29,7 +30,8 @@ client.on('message', message => {
       case COMMAND_ABOUT:
         return message.reply({ embed: RICH_EMBED_ABOUT });
 
-      case COMMAND_ROLL:
+      case `${COMMAND_ROLL} ${REGEX_DIE}`:
+      case `${COMMAND_ROLL} ${REGEX_DICE}`:
         return message.reply(getDiceRoll(command));
 
       default:
