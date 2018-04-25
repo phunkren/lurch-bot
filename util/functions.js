@@ -1,6 +1,6 @@
 const { REGEX_DIE, REGEX_DICE } = require('./constants');
 
-const getCommand = (message, command) =>
+const stripCommand = (message, command) =>
   message
     .toLowerCase()
     .split(command)
@@ -22,7 +22,20 @@ const matchDiceRoll = command => {
   return 'This command is not a die roll';
 };
 
+const logCommandResponse = message => {
+  const server = message.channel.guild;
+  const user = message.author;
+  const { content } = message;
+
+  return console.log(
+    `Command "${content}" requested from ${user.username} (${user.id}) on ${
+      server.name
+    } (${server.id})`
+  );
+};
+
 module.exports = {
-  getCommand,
+  stripCommand,
   matchDiceRoll,
+  logCommandResponse,
 };
