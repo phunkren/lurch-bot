@@ -1,21 +1,31 @@
-const { BOT_TOKEN } = require('./auth/tokens');
+const { BOT_TOKEN } = require('./config/tokens');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const getDiceRoll = require('./commands/getDiceRoll');
-const { stripCommand, logCommandResponse } = require('./util/functions');
+const { stripCommand } = require('./util/functions');
+const {
+  logCommandResponse,
+  logGuildAdd,
+  logGuildRemove,
+} = require('./util/logging');
 const {
   BOT_PREFIX,
-  COMMAND_HELP,
   COMMAND_ABOUT,
+  COMMAND_HELP,
+  COMMAND_PING,
   COMMAND_ROLL,
 } = require('./util/constants');
 const {
   MESSAGE_COMMAND_FALLBACK,
+  MESSAGE_PING_RESPONSE,
   RICH_EMBED_HELP,
   RICH_EMBED_ABOUT,
 } = require('./util/messages');
 
-client.on('message', message => {
+client.on('message', async message => {
+  // Ignores itself
+  if (message.author.bot) return;
+
   if (message.content.startsWith(BOT_PREFIX)) {
     const command = stripCommand(message.content, BOT_PREFIX);
 
@@ -40,8 +50,25 @@ client.on('message', message => {
         .catch(console.error);
     }
 
+    if (command.startsWith(COMMAND_PING)) {
+      const originalMessage = await message.channel.send(COMMAND_PING);
+
+      return originalMessage
+        .edit(MESSAGE_PING_RESPONSE(originalMessage, message, client))
+        .then(() => logCommandResponse(message))
+        .catch(console.error);
+    }
+
     return message.reply(MESSAGE_COMMAND_FALLBACK(command));
   }
+});
+
+client.on('guildCreate', guild => {
+  console.log(logGuildAdd(guild));
+});
+
+client.on('guildDelete', guild => {
+  console.log(logGuildRemove(guild));
 });
 
 client.login(BOT_TOKEN);
