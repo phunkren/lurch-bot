@@ -6,8 +6,15 @@ function getDiceParams(requestedRoll) {
   return requestedRoll.split(DELIMITER).map(n => Number(n ? n : 1));
 }
 
-function validateDiceParams(params) {
-  return params.every(param => Number.isInteger(param));
+function validateDiceParams(diceRoll) {
+  const isDieRoll = diceRoll.match(/[d][0-9]+/i); // e.g. d20
+  const isDiceRoll = diceRoll.match(/[0-9]+[d][0-9]+/i); // e.g. 3d6
+
+  if (!isDieRoll && !isDiceRoll) {
+    return false;
+  }
+
+  return true;
 }
 
 function rollDie(sides) {
@@ -35,7 +42,7 @@ function rollResults(roll, params) {
 const getDiceRoll = command => {
   const diceRoll = stripCommand(command, COMMAND_ROLL);
   const diceParams = getDiceParams(diceRoll);
-  const isRollValid = validateDiceParams(diceParams);
+  const isRollValid = validateDiceParams(diceRoll);
 
   return !isRollValid
     ? `dice roll **${diceRoll}** was not recognised. **(Error)**`

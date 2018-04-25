@@ -1,18 +1,14 @@
 // Application Details
 const BOT_NAME = 'Dice Roller';
-const BOT_PREFIX = '!roll';
+const BOT_PREFIX = '!lurch';
 const BOT_REPO_URL = 'https://github.com/AndrewJDick/dice-roller';
-const BOT_ICON_URL = 'https://i.imgur.com/iUTZbc8.png';
+const BOT_ICON_URL = 'https://i.imgur.com/Fhxwe93.jpg';
 const BOT_VERSION = 'v1.0.0';
 
 // Bot Commands
 const COMMAND_HELP = 'help';
 const COMMAND_ABOUT = 'about';
 const COMMAND_ROLL = 'roll';
-
-// Regular Expressions
-const REGEX_DIE = /[d][0-9]+/i; // d20
-const REGEX_DICE = /[0-9]+[d][0-9]+/i; // 3d6
 
 module.exports = {
   BOT_NAME,
