@@ -30,15 +30,15 @@ client.on('message', async message => {
     const command = stripCommand(message.content, BOT_PREFIX);
 
     if (command.startsWith(COMMAND_HELP)) {
-      return message
-        .reply({ embed: RICH_EMBED_HELP })
+      return message.channel
+        .send({ embed: RICH_EMBED_HELP })
         .then(() => logCommandResponse(message))
         .catch(console.error);
     }
 
     if (command.startsWith(COMMAND_ABOUT)) {
-      return message
-        .reply({ embed: RICH_EMBED_ABOUT })
+      return message.channel
+        .send({ embed: RICH_EMBED_ABOUT })
         .then(() => logCommandResponse(message))
         .catch(console.error);
     }
@@ -59,6 +59,7 @@ client.on('message', async message => {
         .catch(console.error);
     }
 
+    // Fallback
     return message.reply(MESSAGE_COMMAND_FALLBACK(command));
   }
 });

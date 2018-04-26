@@ -1,10 +1,10 @@
-const { COLORS } = require('./colors');
 const {
   BOT_ICON_URL,
   BOT_NAME,
   BOT_PREFIX,
   BOT_REPO_URL,
   BOT_VERSION,
+  COLORS,
   COMMAND_ABOUT,
   COMMAND_HELP,
   COMMAND_PING,
@@ -49,7 +49,7 @@ const RICH_EMBED_HELP = {
     },
     {
       name: `${BOT_PREFIX} ${COMMAND_PING}`,
-      value: `Pings ${BOT_NAME}'s server`,
+      value: `Ping ${BOT_NAME}'s server`,
     },
   ],
 };
