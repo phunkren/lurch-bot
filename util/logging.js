@@ -1,8 +1,10 @@
 const logCommandResponse = message =>
   console.log(
-    `[COMMAND] "${content}" requested from ${message.author.username} (id: ${
-      message.author.id
-    }) on ${message.channel.guild.name} (id: ${message.channel.guild.id})`
+    `[COMMAND] "${message.content}" requested from ${
+      message.author.username
+    } (id: ${message.author.id}) on ${message.channel.guild.name} (id: ${
+      message.channel.guild.id
+    })`
   );
 
 const logGuildAdd = guild =>
