@@ -1,16 +1,12 @@
 {
-  "name": "dice-roller",
+  "name": "lurch",
   "version": "1.0.0",
-  "description": "An automated dice roller for Discord servers",
-  "main": "index.js",
+  "description": "A caretaker bot for Discord servers",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "discord",
-    "dice",
-    "roller"
-  ],
+  "keywords": ["discord", "bot", "dice"],
   "author": "Andrew James Dick",
   "license": "MIT",
   "devDependencies": {
