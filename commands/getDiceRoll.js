@@ -31,8 +31,8 @@ function rollResults(roll, params) {
   const DELIMITER = ', ';
 
   const result = rollDice(numberOfDice, numberOfSides);
-  const allResults = result.join(DELIMITER);
   const totalResult = result.reduce((a, b) => a + b);
+  const allResults = result.join(DELIMITER);
 
   return numberOfDice === 1
     ? `you rolled a ${roll} and got **${totalResult}** 🎲`
