@@ -1,5 +1,4 @@
 const { COLORS } = require('./colors');
-
 const {
   BOT_ICON_URL,
   BOT_NAME,
