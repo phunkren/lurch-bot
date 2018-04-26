@@ -1,4 +1,4 @@
-# Discord Lurch Bot
+# Lurch
 
 A caretaker bot for the Discord application.
 
@@ -17,5 +17,5 @@ General information about Lurch.\
 `!lurch about`
 
 **ping:**\
-Pings Lurch's server.\
+Ping Lurch's server.\
 `!lurch ping`
