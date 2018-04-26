@@ -1,7 +1,7 @@
 // Application Details
 const BOT_NAME = 'Lurch';
 const BOT_PREFIX = '!lurch';
-const BOT_REPO_URL = 'https://github.com/AndrewJDick/dice-roller';
+const BOT_REPO_URL = 'https://github.com/AndrewJDick/lurch-bot';
 const BOT_ICON_URL = 'https://i.imgur.com/Fhxwe93.jpg';
 const BOT_VERSION = 'v1.0.0';
 

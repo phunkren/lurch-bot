@@ -6,16 +6,16 @@ A caretaker bot for the Discord application.
 
 **roll:**\
 Roll either a single die (e.g. **d20**) or multiple (e.g. **3d6**).\
-`!lurch roll 2d8`\
+`!lurch roll 2d8`
 
 **help:**\
 A list of all available commands.\
-`!lurch help`\
+`!lurch help`
 
 **about:**\
 General information about Lurch.\
-`!lurch about`\
+`!lurch about`
 
 **ping:**\
 Pings Lurch's server.\
-`!lurch ping`\
+`!lurch ping`
