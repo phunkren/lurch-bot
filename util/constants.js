@@ -31,4 +31,5 @@ module.exports = {
   COMMAND_HELP,
   COMMAND_ROLL,
   COMMAND_PING,
+  SERVER_PORT,
 };
