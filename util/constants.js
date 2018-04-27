@@ -1,3 +1,6 @@
+// Server Params
+const SERVER_PORT = 3000;
+
 // Application Details
 const BOT_ICON_URL = 'https://i.imgur.com/Fhxwe93.jpg';
 const BOT_NAME = 'Lurch';

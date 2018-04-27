@@ -1,3 +1,6 @@
+const logServerListening = port =>
+  console.log(`[SERVER] server listening on port: ${port}`);
+
 const logCommandResponse = message =>
   console.log(
     `[COMMAND] "${message.content}" requested from ${
@@ -23,4 +26,5 @@ module.exports = {
   logCommandResponse,
   logGuildAdd,
   logGuildRemove,
+  logServerListening,
 };
