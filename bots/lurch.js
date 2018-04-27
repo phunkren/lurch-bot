@@ -27,7 +27,7 @@ module.exports = () => {
     // Ignores itself
     if (message.author.bot) return;
 
-    if (message.content.startsWith(BOT_PREFIX)) {
+    if (message.content.toUpperCase().startsWith(BOT_PREFIX.toUpperCase)) {
       const command = stripCommand(message.content, BOT_PREFIX);
 
       if (command.startsWith(COMMAND_HELP)) {
