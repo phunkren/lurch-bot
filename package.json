@@ -1,5 +1,5 @@
 {
-  "name": "lurch",
+  "name": "lurch-bot",
   "version": "1.0.0",
   "description": "A caretaker bot for Discord servers",
   "main": "index.js",
@@ -8,20 +8,15 @@
     "url": "https://github.com/AndrewJDick/lurch-bot"
   },
   "scripts": {
-    "start": "micro",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "deploy": "now --public -e BOT_SECRET_TOKEN=@bot-secret-token"
   },
-  "keywords": [
-    "discord",
-    "bot",
-    "dice"
-  ],
-  "author": "Andrew James Dick",
+  "keywords": ["discord", "bot", "dice roller"],
+  "author": "Andrew James Dick <andrewdick1987@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "micro": "latest"
-  },
-  "devDependencies": {
+    "http": "0.0.0",
+    "micro": "latest",
     "discord.js": "^11.3.2"
   }
 }
