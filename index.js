@@ -65,4 +65,4 @@ client.on('message', async message => {
 
 client.on('guildCreate', guild => logGuildAdd(guild));
 client.on('guildDelete', guild => logGuildRemove(guild));
-client.login(process.env.MY_VARIABLE);
+client.login(process.env.BOT_SECRET_TOKEN);
