@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "node index.js",
-    "deploy": "now --public -e BOT_SECRET_TOKEN=@bot-secret-token"
+    "deploy": "now --public -e BOT_SECRET_TOKEN=@bot-secret-token",
+    "clean": "rm -rf node_modules/"
   },
   "keywords": ["discord", "bot", "dice roller"],
   "author": "Andrew James Dick <andrewdick1987@gmail.com>",
