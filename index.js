@@ -1,4 +1,3 @@
-const { BOT_TOKEN } = require('./config/tokens');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const getDiceRoll = require('./commands/getDiceRoll');
@@ -66,4 +65,4 @@ client.on('message', async message => {
 
 client.on('guildCreate', guild => logGuildAdd(guild));
 client.on('guildDelete', guild => logGuildRemove(guild));
-client.login(BOT_TOKEN);
+client.login(process.env.MY_VARIABLE);
