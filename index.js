@@ -8,7 +8,3 @@ server.listen(SERVER_PORT, () => {
   logServerListening(SERVER_PORT);
   startLurchBot();
 });
-
-setInterval(() => {
-  http.get(BOT_APP_URL);
-}, 300000); // every 5 minutes
