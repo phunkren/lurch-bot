@@ -2,6 +2,7 @@
 const SERVER_PORT = 3000;
 
 // Application Details
+const BOT_APP_URL = 'https://lurch-bot.herokuapp.com/';
 const BOT_ICON_URL = 'https://i.imgur.com/Fhxwe93.jpg';
 const BOT_NAME = 'Lurch';
 const BOT_PREFIX = '!lurch';
@@ -21,6 +22,7 @@ const COLORS = {
 };
 
 module.exports = {
+  BOT_APP_URL,
   BOT_ICON_URL,
   BOT_NAME,
   BOT_PREFIX,
