@@ -27,10 +27,11 @@ function rollDice(dice, sides) {
     console.log(`Length is: ${items.length}`);
   } catch (e) {
     if (e instanceof RangeError) {
-        printError(e, true);
+      printError(e, true);
     } else {
-        printError(e, false);
+      printError(e, false);
     }
+  }
 }
 
 function rollResults(roll, params) {
