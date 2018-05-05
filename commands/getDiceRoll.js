@@ -22,7 +22,15 @@ function rollDie(sides) {
 }
 
 function rollDice(dice, sides) {
-  return Array.from({ length: dice }, () => rollDie(sides));
+  try {
+    return Array.from({ length: dice }, () => rollDie(sides));
+    console.log(`Length is: ${items.length}`);
+  } catch (e) {
+    if (e instanceof RangeError) {
+        printError(e, true);
+    } else {
+        printError(e, false);
+    }
 }
 
 function rollResults(roll, params) {
