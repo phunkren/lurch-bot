@@ -1,6 +1,6 @@
 {
   "name": "lurch-bot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A caretaker bot for Discord servers",
   "author": "Andrew James Dick <andrewdick1987@gmail.com>",
   "license": "MIT",
@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "start": "node index.js",
+    "start:local": "heroku local worker",
     "clean": "rm -rf node_modules/ yarn.lock",
     "install:discordPeerDeps": "install-peerdeps discord.js@latest",
     "install:latest": "yarn upgrade --latest",
