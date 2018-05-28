@@ -2,22 +2,40 @@
   "name": "lurch-bot",
   "version": "1.0.0",
   "description": "A caretaker bot for Discord servers",
+  "author": "Andrew James Dick <andrewdick1987@gmail.com>",
+  "license": "MIT",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/AndrewJDick/lurch-bot"
   },
+  "keywords": [
+    "discord",
+    "bot",
+    "dice roller"
+  ],
   "scripts": {
     "start": "node index.js",
-    "deploy": "now --public -e BOT_SECRET_TOKEN=@bot-secret-token",
-    "clean": "rm -rf node_modules/"
+    "clean": "rm -rf node_modules/ yarn.lock",
+    "install:discordPeerDeps": "install-peerdeps discord.js@latest",
+    "install:latest": "yarn upgrade --latest",
+    "maintenance:on": "heroku maintenance:on -a lurch-bot && heroku ps:scale worker=0 -a lurch-bot",
+    "maintenance:off": "heroku maintenance:off -a lurch-bot && heroku ps:scale worker=1 -a lurch-bot"
   },
-  "keywords": ["discord", "bot", "dice roller"],
-  "author": "Andrew James Dick <andrewdick1987@gmail.com>",
-  "license": "MIT",
   "dependencies": {
+    "bufferutil": "^3.0.3",
+    "discord.js": "11.3.2",
+    "erlpack": "discordapp/erlpack",
     "http": "0.0.0",
+    "libsodium-wrappers": "^0.7.3",
     "micro": "latest",
-    "discord.js": "^11.3.2"
+    "node-opus": "^0.2.7",
+    "opusscript": "^0.0.6",
+    "sodium": "^2.0.3",
+    "uws": "^9.14.0"
+  },
+  "devDependencies": {
+    "heroku": "^7.0.60",
+    "install-peerdeps": "^1.7.0"
   }
 }
