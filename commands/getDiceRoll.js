@@ -24,13 +24,8 @@ function rollDie(sides) {
 function rollDice(dice, sides) {
   try {
     return Array.from({ length: dice }, () => rollDie(sides));
-    console.log(`Length is: ${items.length}`);
-  } catch (e) {
-    if (e instanceof RangeError) {
-      console.log(e, true);
-    } else {
-      console.log(e, false);
-    }
+  } catch (error) {
+    console.error(error);
   }
 }
 
@@ -44,7 +39,7 @@ function rollResults(roll, params) {
   const allResults = result.join(DELIMITER);
 
   return numberOfDice === 1
-    ? `you rolled a ${roll} and got **${totalResult}** 🎲`
+    ? `you rolled a ${roll} and got **${totalResult}**`
     : `you rolled ${roll} and got **${totalResult}** _(${allResults})_ `;
 }
 
