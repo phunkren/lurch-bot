@@ -17,10 +17,10 @@ const {
   COMMAND_ROLL,
 } = require('./util/constants');
 const {
-  MESSAGE_COMMAND_FALLBACK,
+  MESSAGE_FALLBACK_RESPONSE,
   MESSAGE_PING_RESPONSE,
-  RICH_EMBED_HELP,
-  RICH_EMBED_ABOUT,
+  MESSAGE_HELP_RESPONSE,
+  MESSAGE_ABOUT_RESPONSE,
 } = require('./util/messages');
 const getDiceRoll = require('./commands/getDiceRoll');
 
@@ -42,14 +42,14 @@ client.on('message', async message => {
 
     if (command.startsWith(COMMAND_HELP)) {
       return message.channel
-        .send({ embed: RICH_EMBED_HELP })
+        .send({ embed: MESSAGE_HELP_RESPONSE })
         .then(() => logCommandResponse(message))
         .catch(console.error);
     }
 
     if (command.startsWith(COMMAND_ABOUT)) {
       return message.channel
-        .send({ embed: RICH_EMBED_ABOUT })
+        .send({ embed: MESSAGE_ABOUT_RESPONSE })
         .then(() => logCommandResponse(message))
         .catch(console.error);
     }
@@ -71,7 +71,7 @@ client.on('message', async message => {
     }
 
     // Fallback
-    return message.reply(MESSAGE_COMMAND_FALLBACK(command));
+    return message.reply(MESSAGE_FALLBACK_RESPONSE(command));
   }
 });
 
