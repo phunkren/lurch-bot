@@ -1,13 +1,10 @@
-// Server Params
-const SERVER_PORT = 3000;
-
 // Application Details
-const BOT_APP_URL = 'https://lurch-bot.herokuapp.com/';
+const BOT_APP_URL = `https://${process.env.npm_package_name}.herokuapp.com/`;
 const BOT_ICON_URL = 'https://i.imgur.com/Fhxwe93.jpg';
 const BOT_NAME = 'Lurch';
 const BOT_PREFIX = '!lurch';
-const BOT_REPO_URL = 'https://github.com/AndrewJDick/lurch-bot';
-const BOT_VERSION = 'v1.0.0';
+const BOT_REPO_URL = process.env.npm_package_repository_url;
+const BOT_VERSION = `v${process.env.npm_package_version}`;
 
 // Bot Commands
 const COMMAND_ABOUT = 'about';
@@ -33,5 +30,4 @@ module.exports = {
   COMMAND_HELP,
   COMMAND_ROLL,
   COMMAND_PING,
-  SERVER_PORT,
 };
