@@ -15,13 +15,18 @@
     "dice roller"
   ],
   "scripts": {
-    "start": "node index.js",
-    "start:local": "heroku local worker",
+    "start": "yarn test:start",
     "clean": "rm -rf node_modules/ yarn.lock",
+    "heroku:config": "heroku config -a lurch-bot",
+    "heroku:maintenance:on": "heroku maintenance:on -a lurch-bot",
+    "heroku:maintenance:off": "heroku maintenance:off -a lurch-bot",
+    "heroku:worker:off": "heroku ps:scale worker=0 -a lurch-bot",
+    "heroku:worker:on": "heroku ps:scale worker=1 -a lurch-bot",
     "install:discordPeerDeps": "install-peerdeps discord.js@latest",
     "install:latest": "yarn upgrade --latest",
-    "maintenance:on": "heroku maintenance:on -a lurch-bot && heroku ps:scale worker=0 -a lurch-bot",
-    "maintenance:off": "heroku maintenance:off -a lurch-bot && heroku ps:scale worker=1 -a lurch-bot"
+    "test:disable": "yarn heroku:maintenance:off && yarn heroku:worker:on",
+    "test:enable": "yarn heroku:maintenance:on && yarn heroku:worker:off",
+    "test:start": "heroku local worker -p 3000"
   },
   "dependencies": {
     "bufferutil": "^3.0.3",
@@ -36,7 +41,7 @@
     "uws": "^9.14.0"
   },
   "devDependencies": {
-    "heroku": "^7.0.60",
+    "heroku": "^7.6.0",
     "install-peerdeps": "^1.7.0"
   }
 }
