@@ -19,3 +19,11 @@ General information about Lurch.\
 **ping:**\
 Ping Lurch's server.\
 `!lurch ping`
+
+## Test Environment:
+
+**Enable/Disable local testing:**
+`$ yarn test:[enable|disable]`
+
+**Start local environment:**
+`$ yarn start`
