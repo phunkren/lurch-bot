@@ -1,13 +1,20 @@
 const logServerListening = port =>
   console.log(`server listening on port: ${port}`);
 
-const logCommandResponse = message =>
+const logUnknownCommand = message =>
   console.log(
-    `"${message.content}" requested from ${
+    `Unknown command "${message.content}" requested from ${
       message.author.username
     } (id: ${message.author.id}) on ${message.channel.guild.name} (id: ${
       message.channel.guild.id
     })`
+  );
+
+const logCommandResponse = message =>
+  console.log(
+    `"${message.content}" requested from ${message.author.username} (id: ${
+      message.author.id
+    }) on ${message.channel.guild.name} (id: ${message.channel.guild.id})`
   );
 
 const logGuildAdd = guild =>
@@ -24,4 +31,5 @@ module.exports = {
   logGuildAdd,
   logGuildRemove,
   logServerListening,
+  logUnknownCommand,
 };

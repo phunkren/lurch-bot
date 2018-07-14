@@ -7,7 +7,8 @@ const {
   logCommandResponse,
   logGuildAdd,
   logGuildRemove,
-  logServerListening
+  logServerListening,
+  logUnknownCommand
 } = require('./util/logging');
 const {
   BOT_PREFIX,
@@ -29,7 +30,7 @@ server.listen(process.env.PORT, () => {
 });
 
 process.on('SIGINT', () => {
-  console.log("Application successfully terminated!");
+  console.log('Application successfully terminated!');
   process.exit();
 });
 
@@ -71,12 +72,13 @@ client.on('message', async message => {
     }
 
     // Fallback
-    return message.reply(MESSAGE_FALLBACK_RESPONSE(command));
-  }
+    return message
+      .reply(MESSAGE_FALLBACK_RESPONSE(command))
+      .then(() => logUnknownCommand(message))
+      .catch(console.error);
 });
 
 client.on('guildCreate', guild => logGuildAdd(guild));
 client.on('guildDelete', guild => logGuildRemove(guild));
 
 client.login(process.env.BOT_SECRET_TOKEN);
-
