@@ -1,10 +1,12 @@
+const packageJSON = require('../package.json');
+
 // Application Details
-const BOT_APP_URL = `https://${process.env.npm_package_name}.herokuapp.com/`;
+const BOT_APP_URL = `https://${packageJSON.name}.herokuapp.com/`;
 const BOT_ICON_URL = 'https://i.imgur.com/Fhxwe93.jpg';
 const BOT_NAME = 'Lurch';
 const BOT_PREFIX = '!lurch';
-const BOT_REPO_URL = process.env.npm_package_repository_url;
-const BOT_VERSION = `v${process.env.npm_package_version}`;
+const BOT_REPO_URL = `${packageJSON.repository.url}`;
+const BOT_VERSION = `v${packageJSON.version}`;
 
 // Bot Commands
 const COMMAND_ABOUT = 'about';
