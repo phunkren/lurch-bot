@@ -8,7 +8,7 @@ const {
   logGuildAdd,
   logGuildRemove,
   logServerListening,
-  logUnknownCommand
+  logUnknownCommand,
 } = require('./util/logging');
 const {
   BOT_PREFIX,
@@ -76,6 +76,7 @@ client.on('message', async message => {
       .reply(MESSAGE_FALLBACK_RESPONSE(command))
       .then(() => logUnknownCommand(message))
       .catch(console.error);
+  }
 });
 
 client.on('guildCreate', guild => logGuildAdd(guild));
