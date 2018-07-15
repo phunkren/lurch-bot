@@ -3,6 +3,7 @@ const client = new Discord.Client();
 const { createServer } = require('http');
 const server = createServer(() => {});
 const {
+  logApplicationTerminated,
   logGuildAdd,
   logGuildRemove,
   logServerListening,
@@ -20,7 +21,7 @@ client.on('guildCreate', guild => logGuildAdd(guild));
 client.on('guildDelete', guild => logGuildRemove(guild));
 
 process.on('SIGINT', () => {
-  console.log('Application successfully terminated!');
+  logApplicationTerminated();
   process.exit();
 });
 

@@ -1,3 +1,5 @@
+const packageJSON = require('../package.json');
+
 const logServerListening = port =>
   console.log(`server listening on port: ${port}`);
 
@@ -26,7 +28,11 @@ const logGuildAdd = guild =>
 const logGuildRemove = guild =>
   console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
 
+const logApplicationTerminated = () =>
+  console.log(`Application ${packageJSON.name} successfully terminated!`);
+
 module.exports = {
+  logApplicationTerminated,
   logCommandResponse,
   logGuildAdd,
   logGuildRemove,
