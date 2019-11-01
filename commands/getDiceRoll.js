@@ -53,4 +53,5 @@ const getDiceRoll = command => {
     : rollResults(diceRoll, diceParams);
 };
 
+// Random comment
 module.exports = getDiceRoll;
